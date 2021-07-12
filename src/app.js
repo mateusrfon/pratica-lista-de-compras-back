@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post('/list', async (req,res) => {
+app.post('/items', async (req,res) => {
     try {
         const { text } = req.body;
         await connection.query(`
@@ -21,7 +21,7 @@ app.post('/list', async (req,res) => {
     }
 });
 
-app.get('/list', async (req,res) => {
+app.get('/items', async (req,res) => {
     try {
         const request = await connection.query('SELECT * FROM items');
         const items = request.rows;
